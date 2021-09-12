@@ -1,5 +1,4 @@
 from tkinter import *
-import typing_extensions
 from downloader import download
 
 root = Tk()
@@ -22,7 +21,7 @@ path_input.grid(row=2, column=1)
 
 # Function to pass URL and path to the download function
 # download() is imported from the downloader.py
-# After clicking the button the url input is cleared
+# URL input is cleared after clicking the button
 def call_downloader():
     URL = url_input.get()
     PATH = path_input.get()
