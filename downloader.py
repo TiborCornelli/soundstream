@@ -8,5 +8,3 @@ def download(link: str, destination: str) -> None:
     base, ext = os.path.splitext(out_file)
     new_file: str = base + '.mp3'
     os.rename(out_file, new_file)
-
-download(str(input("Enter the video URL: \n>> ")), "/Users/tiborcornelli/Documents/music")
