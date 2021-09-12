@@ -1,35 +1,46 @@
 from tkinter import *
+import tkinter as tk
+from tkinter import ttk
+from tkinter import filedialog
 from downloader import download
 
-root = Tk()
+class App(tk.Tk):
+    def __init__(self):
+        super().__init__()
 
-title = Label(root, text="This app converts youtube videos into local MP3 files" ).grid(row=0,column=1)
+        # Variables
+        self.PATH: str
 
-# Insert URL here
-url_label = Label(root, text="Enter the video URL here: ")
-url_input = Entry(root, width=35)
+        # Insert destination path here
+        self.path_label = Label(self, text="Choose location for the file")
+        self.path_input = Button(self, text="Choose location", command=self.select_path)
+        self.path_input["width"] = 30
+        self.path_label.grid(row=0, column=0)
+        self.path_input.grid(row=0, column=1)
 
-url_label.grid(row=1,column=0)
-url_input.grid(row=1,column=1)
+        # Insert URL here
+        self.url_label = Label(self, text="Enter the video URL: ")
+        self.url_input = Entry(self)
+        self.url_input["width"] = 35
+        self.url_label.grid(row=1,column=0)
+        self.url_input.grid(row=1,column=1)
 
-# Insert destination path here
-path_label = Label(root, text="Where do you want to store the mp3 file?")
-path_input = Entry(root, width=35)
+        # button to submit url
+        self.button = Button(self, text="Download", command=self.call_downloader)
+        self.button.grid(row=1, column=2)
+    
+    def set_path(self, path: str) -> None:
+        self.PATH: str = path
 
-path_label.grid(row=2, column=0)
-path_input.grid(row=2, column=1)
+    def select_path(self) -> None: # Users can select the location
+        folder_selected: str = filedialog.askdirectory()
+        self.set_path(folder_selected)
+        self.path_input["text"] = folder_selected # Button shows the currently chosen path
 
-# Function to pass URL and path to the download function
-# download() is imported from the downloader.py
-# URL input is cleared after clicking the button
-def call_downloader():
-    URL = url_input.get()
-    PATH = path_input.get()
-    url_input.delete(0,"end")
-    download(URL, PATH)
+    def call_downloader(self) -> None:
+        url = self.url_input.get()
+        path = self.PATH
+        self.url_input.delete(0,"end") # url input is cleared after clicking the button
+        download(url, path) # download() is imported from the downloader.py
 
-# Button to submit url and path
-button = Button(root, text="Confirm", command=call_downloader)
-button.grid(row=3, column=1)
-
-root.mainloop() 
+app = App().mainloop() 
