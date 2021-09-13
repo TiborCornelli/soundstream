@@ -1,7 +1,7 @@
-To create an executable run the following commands your command line
+To create an executable run the following commands your command line:
 
 
-If you don't have pyinstaller installed yet run
+If you don't have pyinstaller installed yet, run
 
 ```
 pip install pyinstaller
