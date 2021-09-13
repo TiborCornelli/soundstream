@@ -5,18 +5,20 @@ from tkinter import filedialog
 from downloader import download
 
 class App(tk.Tk):
+
     def __init__(self):
         super().__init__()
 
         # Variables
         self.PATH: str
+        self.title("Youtube MP3 converter")
 
         # Insert destination path here
-        self.path_label = Label(self, text="Choose location for the file")
+        self.path_label = Label(self, text="Choose storage location")
         self.path_input = Button(self, text="Choose location", command=self.select_path)
-        self.path_input["width"] = 30
+        self.path_input["width"] = 45
         self.path_label.grid(row=0, column=0)
-        self.path_input.grid(row=0, column=1)
+        self.path_input.grid(row=0, column=1, columnspan=2)
 
         # Insert URL here
         self.url_label = Label(self, text="Enter the video URL: ")
@@ -49,6 +51,5 @@ class App(tk.Tk):
             self.warning.grid_forget() # Hides warning if no problems occur
         except:
             self.warning.grid(row=2, column=1)
-            
 
-app = App().mainloop()
+App().mainloop()
