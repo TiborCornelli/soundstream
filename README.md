@@ -16,5 +16,5 @@ cd <path/to/soundstream>
 and create the executable
 
 ```
-pyinstaller -F --noconsole -nsoundstream --paths=pyinstaller  gui.py
+pyinstaller -F --noconsole -n soundstream gui.py
 ```
