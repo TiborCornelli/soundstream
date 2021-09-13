@@ -3,3 +3,8 @@ __pycache__/
 *.py[cod]
 
 .DS_store
+
+# Files created by pyinstaller
+build
+dist
+*.spec
