@@ -1,9 +1,10 @@
 To create an executable run the following commands your command line:
 
 
-If you don't have pyinstaller installed yet, run
+If you don't have pyinstaller or pytube installed yet, run
 
 ```
+pip install pytube
 pip install pyinstaller
 ```
 
