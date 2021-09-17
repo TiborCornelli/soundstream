@@ -19,6 +19,4 @@ and create the executable
 ```
 pyinstaller -F --noconsole -n soundstream Soundstream/gui.py
 ```
-A folder 'dist' will appear, containing the file soundstream. To use the soundstream there is no need to install Python or other packages.
-
-This will create an executable soundstream/dist/soundstream you can easily use.
+A folder 'dist' will appear, containing the soundstream executable.
